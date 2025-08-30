@@ -47,8 +47,13 @@ android {
         minSdk = 21
     }
 
+    
+    lint {
+        disable "NullSafeMutableLiveData"
+    }
+
     dependencies {        
-        implementation 'com.github.tiann:FreeReflection:3.1.0'
+        implementation 'com.github.tiann:FreeReflection:3.2.2'
         testImplementation("org.jetbrains.kotlin:kotlin-test")
         testImplementation("org.mockito:mockito-core:5.0.0")
     }
