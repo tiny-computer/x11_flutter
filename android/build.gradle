@@ -72,5 +72,5 @@ android {
 }
 
 dependencies {
-        implementation 'com.github.tiny-computer:termux-x11:1053d6cbc0'
+        implementation 'com.github.tiny-computer:termux-x11:27379b8bc2'
 }
