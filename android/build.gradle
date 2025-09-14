@@ -53,6 +53,8 @@ android {
     }
 
     dependencies {        
+        implementation "androidx.appcompat:appcompat:1.7.0"
+        implementation 'androidx.preference:preference:1.2.1'
         implementation 'com.github.tiann:FreeReflection:3.2.2'
         testImplementation("org.jetbrains.kotlin:kotlin-test")
         testImplementation("org.mockito:mockito-core:5.0.0")
@@ -72,5 +74,5 @@ android {
 }
 
 dependencies {
-        implementation 'com.github.tiny-computer:termux-x11:27379b8bc2'
+        implementation 'com.github.tiny-computer:termux-x11:5762129903'
 }

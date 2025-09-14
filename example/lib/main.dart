@@ -124,6 +124,30 @@ class _MyAppState extends State<MyApp> {
                 const SizedBox(height: 16),
                 SizedBox(
                   width: double.infinity,
+                  child: ElevatedButton(
+                    onPressed: () async {
+                      try {
+                        await X11Flutter.setX11ScaleFactor(2.0);
+                      } catch (e) {
+                        if (!mounted) return;
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(content: Text('Error setting scale: $e')),
+                        );
+                      }
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.blue,
+                      padding: const EdgeInsets.symmetric(vertical: 16),
+                    ),
+                    child: const Text(
+                      'Set Scale x2',
+                      style: TextStyle(fontSize: 18),
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 16),
+                SizedBox(
+                  width: double.infinity,
                   child: OutlinedButton(
                     onPressed: _launchX11Prefs,
                     style: OutlinedButton.styleFrom(

@@ -73,6 +73,23 @@ class X11FlutterPlugin: FlutterPlugin, MethodCallHandler, ActivityAware {
                     result.error("LAUNCH_X11_PAGE_FAILED", "Failed to launch X11 page: ${e.message}", e.stackTraceToString())
                 }
             }
+            "setScale" -> {
+                try {
+                    val scale = call.argument<Double>("scale")
+                    if (scale == null) {
+                        result.error("INVALID_ARGUMENTS", "scale argument is required", null)
+                        return
+                    }
+                    val intent = Intent("com.termux.x11.CHANGE_PREFERENCE").apply {
+                        putExtra("tc_displayScale", scale.toString())
+                        setPackage(activity!!.packageName)
+                    }
+                    activity!!.sendBroadcast(intent)
+                    result.success(0)
+                } catch (e: Exception) {
+                    result.error("SET_SCALE_FAILED", "Failed to set scale: ${e.message}", e.stackTraceToString())
+                }
+            }
             else -> {
                 result.notImplemented()
             }

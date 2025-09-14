@@ -43,6 +43,19 @@ class X11Flutter {
     }
   }
 
+  /// 在原有的缩放上设置缩放倍率
+  static Future<int> setX11ScaleFactor(double scale) async {
+    try {
+      final result = await _channel.invokeMethod('setScale', {
+        'scale': scale,
+      });
+      return result as int;
+    } on PlatformException catch (e) {
+      _logError('setScaleFactor', e);
+      rethrow;
+    }
+  }
+
   static void _logError(String methodName, PlatformException e) {
     print('Failed to $methodName: ${e.message}. '
         'Details: ${e.details}, Code: ${e.code}');
